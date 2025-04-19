@@ -15,7 +15,7 @@ class GarminHelloWorldWidgetView extends Ui.View {
     // System.println(now);
   }
 
-  function updateTime() {
+  function updateTime() as Void {
     _nowEpoch = Time.now().value().toString();
     Ui.requestUpdate();
   }
@@ -33,7 +33,8 @@ class GarminHelloWorldWidgetView extends Ui.View {
     View.onUpdate(dc);
 
     setLayout(Rez.Layouts.MainLayout(dc));
-    View.findDrawableById("center").setText(_nowEpoch);
+    var timeView = (View.findDrawableById("center") as Toybox.WatchUi.Text);
+    timeView.setText(_nowEpoch);
   }
 
   function onHide() {}
